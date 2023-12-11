@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    //author constructor
+    function Author(n,bdy,nation){
+        this.name=n;
+        this.birthYear=bdy;
+        this.nationality=nation;
+    }
+    //Book constructor
+    function Book(t,a,g,p){
+        this.title=t;
+        this.author=a;
+        this.genre=g;
+        this.price=p;
+    }
+    // method on book prototype
+    Book.prototype.getBookInfo=function(){
+        console.log(`Title---->${this.title}`)
+        console.log(`AuthorName--->${this.author.name}`)
+        console.log(`Genre---->${this.genre}`)
+        console.log(`Price---->${this.price}`)
+    }
+    let Author1=new Author("Abhishek",1999,"Indian")
+    // instance of book
+    let book1=new Book("paradice",Author1,"fan",19)
+    //instance of author
+    
+    book1.getBookInfo();
+</script>
