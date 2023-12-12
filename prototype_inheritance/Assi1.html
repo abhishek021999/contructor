@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+</body>
+</html>
+<script>
+    function Vehicle(b,m,s,f){
+        this.brand=b;
+        this.model=m;
+        this.speed=s;
+        this.fuelType=f;
+    }
+    Vehicle.prototype.accelerate=function(){
+        this.speed++;
+    }
+    Vehicle.prototype.brake=function(){
+        this.speed--;
+
+    }
+    Vehicle.prototype.refuel=function(){
+        console.log("Vehicle is refueling")
+    }
+    // let car=new Vehicle("tata",2023,200,"petrol")
+    // car.accelerate()
+    // car.brake()
+    // car.refuel()
+    // console.log(car)
+    function Car(b,m,s,f,c){
+        Vehicle.call(this,b,m,s,f,c)
+        this.light=c;
+    }
+    Car.prototype.honk=function(){
+        console.log("honking sound")
+    }
+    // let car=new Vehicle("tata",2023,200,"petrol")
+    let verna=new Car("tata",2023,200,"petrol","pink");
+    
+    Object.setPrototypeOf(Car.prototype,Vehicle.prototype);
+    verna.accelerate()
+    console.log(verna)
+
+
+</script>
