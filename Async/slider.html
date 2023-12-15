@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>slider</title>
+    <style>
+        img{
+            width: 30%;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <button id="left"><</button>
+    <button id="right">></button>
+</body>
+</html>
+<script>
+    let arr=[
+        "https://images.unsplash.com/photo-1575936123452-b67c3203c357?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSr37IH21bYP-VgzRhA3zcL75fSRDS0bb2d1ApGwZpIOw&s","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsjv8k9FpJH5AvquxbVyd06B5UludsXYeHuTLTGllucw&s","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSV1rARdKWopb7On1bDS5hH5_7bjT7ZH1n1U-Fb-ysCpA&s","https://statusneo.com/wp-content/uploads/2023/02/MicrosoftTeams-image551ad57e01403f080a9df51975ac40b6efba82553c323a742b42b1c71c1e45f1.jpg","https://thumbs.dreamstime.com/b/environment-earth-day-hands-trees-growing-seedlings-bokeh-green-background-female-hand-holding-tree-nature-field-gra-130247647.jpg"
+    ]
+    let i=0
+    let img=document.createElement("img")
+    img.src=arr[i]
+    let body=document.querySelector('body');
+    body.append(img)
+    setInterval(() => {
+        i++;
+       if(i>arr.length-1){
+         i=0;
+       }
+       img.src=arr[i] 
+    },1000);
+    let leftbutton=document.getElementById("left");
+    let rightbutton=document.getElementById("right");
+    leftbutton.addEventListener("click",function(){
+        img.src=arr[i]
+        i--;
+    });
+    rightbutton.addEventListener("click",function(){
+        img.src=arr[i]
+        i++;
+    });
+</script>

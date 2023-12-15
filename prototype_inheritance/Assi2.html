@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    // using constructor function
+    function Automobile(b,m,f,c){
+        this.brand=b;
+        this.model=m,
+        this.fuelType=f,
+        this.color=c;
+    }
+    //set prototype
+    Automobile.prototype.showName=function(){
+        console.log(`BRAND NAME IS --> ${this.brand}`)
+    }
+    // automobile properties inhert to fourwheeler
+    function Fourwheeler(b,m,f,c){
+        Automobile.call(this,b,m,f,c)
+    }
+    // Fourwheeler.prototype=Object.create(Automobile.prototype);
+    Object.setPrototypeOf(Fourwheeler.prototype,Automobile.prototype);
+    let obj=new Fourwheeler("tata",2023,"petrol","white")
+    console.log(obj.showName())
+</script>
