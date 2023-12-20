@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Virtual Food Ordering System</title>
+  <style>
+    #foodImage {
+      display: none;
+      max-width: 300px;
+      margin: 20px auto;
+    }
+    #orderNumber {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #fff;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <button id="orderButton">Order Food</button>
+  <div>
+    <label><input type="checkbox" class="foodItem" value="Burger"> Burger</label>
+    <label><input type="checkbox" class="foodItem" value="Fries"> Fries</label>
+    <label><input type="checkbox" class="foodItem" value="Drink"> Drink</label>
+  </div>
+  <img id="foodImage" src="" alt="Food Image">
+  <span id="orderNumber"></span>
+
+  <script>
+    document.getElementById('orderButton').addEventListener('click', () => {
+      const selectedItems = Array.from(document.querySelectorAll('.foodItem:checked')).map(item => item.value);
+
+      if (selectedItems.length === 0) {
+        alert('Please select at least one item!');
+        return;
+      }
+
+      const orderId = generateOrderId();
+      simulateOrder(selectedItems, orderId);
+    });
+
+    function simulateOrder(selectedItems, orderId) {
+      showLoader();
+
+      const randomSeconds = Math.floor(Math.random() * 5000) + 1000; // Random time between 1 to 5 seconds
+      setTimeout(() => {
+        const foodImage = document.getElementById('foodImage');
+        const orderNumber = document.getElementById('orderNumber');
+
+        const randomFoodIndex = Math.floor(Math.random() * selectedItems.length);
+        const foodItem = selectedItems[randomFoodIndex];
+
+        foodImage.src = `https://via.placeholder.com/300x200?text=${foodItem}`;
+        foodImage.style.display = 'block';
+        orderNumber.textContent = `Order ID: ${orderId}`;
+      }, randomSeconds);
+    }
+
+    function showLoader() {
+      const foodImage = document.getElementById('foodImage');
+      const orderNumber = document.getElementById('orderNumber');
+
+      foodImage.style.display = 'none';
+      orderNumber.textContent = '';
+    }
+
+    function generateOrderId() {
+      return Math.floor(Math.random() * 10000) + 1;
+    }
+  </script>
+</body>
+</html>

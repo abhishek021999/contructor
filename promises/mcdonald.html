@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>McDonald's</title>
+</head>
+<body>
+    
+   <label><input type="checkbox" name="food" value="pizza">pizza</label>
+   <label><input type="checkbox" name="food" value="burger">burger</label>
+   <label><input type="checkbox" name="food" value="fries">fries</label>
+    <br>
+    <br>
+    <button id="order">Order Food</button>
+    <h1 id="display">Display</h1>
+    
+</body>
+</html>
+<script>
+    let order=document.getElementById("order");
+    let head=document.getElementById("display");
+    let arr=[
+    "https://t3.ftcdn.net/jpg/00/27/57/96/360_F_27579652_tM7V4fZBBw8RLmZo0Bi8WhtO2EosTRFD.jpg",
+    "https://www.shutterstock.com/image-photo/classic-hamburger-stock-photo-isolated-600nw-2282033179.jpg",
+    "https://cdn.britannica.com/34/206334-050-7637EB66/French-fries.jpg",
+    ]
+    let i=0
+    let img=document.createElement("img")
+    img.src=arr[i]
+   
+    order.addEventListener("click",function(){
+    let inp1=document.querySelectorAll('input[name="food"]:checked');
+        if(inp1.length==0){
+            alert("please select at least one items")
+        }
+        setTimeout(() => {
+            
+            let myPromise = new Promise(function (resolve,reject) {
+
+                if(inp1.length>0)
+                {
+                    resolve(Array.from(inp1).map(items=>items.value))// array.from will convert nodelist to array
+                }
+                else{
+                    reject("No data available")
+                }
+            })
+            myPromise.then(function(data){
+            showdata(data)
+        }).catch(function(no){
+            console.log(no)
+    })
+        }, 2000);
+    })
+    function showdata(data){
+        head.innerText=`ordered placed :${data}`
+          //store the value of data
+    let body=document.querySelector("body")
+    body.append(img)
+    img.src=arr[i]
+    i++; 
+    
+    }
+
+   
+    
+
+
+</script>
