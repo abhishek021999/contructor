@@ -19,7 +19,7 @@ function display(detail){
         let user_name= document.createElement("h3")
         user_name.innerText=`user_name:- ${element.first_name}`
         let Email=document.createElement("p")
-        Email.innerText=`Email :- ${element.email}`
+        Email.innerText=`Email :- ${element.email }`
         cont.append(avatar_image,user_name,Email)
     });
 }
