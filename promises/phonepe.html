@@ -30,21 +30,27 @@
     let image=document.createElement("img")
     
     let promiseone=new Promise(function(resolve,reject){
-            
+            let flag=true;
             image.src="https://i.gifer.com/VM3x.gif"
             display.append(image)
             setTimeout(() => {
+               if(flag==true){
                 resolve()
+               }
+               else{
                 reject()
+               }
             },5000);
              })
              promiseone.then(function() {
                 image.src="https://i.gifer.com/7efs.gif"
                 display.append(image)
+            })
+
             promiseone.catch(function() {
                 image.src="https://cdn0.opinion-corp.com/review-media/pictures/2023/09/19/phonepe_not-sending-money-other-number-202309195124735_101c-gallery.jpeg"
                 display.append(image)
             })
-            })  
+            
   
 </script>
